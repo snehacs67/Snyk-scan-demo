@@ -14,3 +14,14 @@ jobs:
            args: --sarif-file-output=snyk.sarif
            -name: Print the snyk sarif file
            run: car snyk.sarif
+      - name: Send notification on Slack using Webhooks
+        uses: slackapi/slack-github-action@v1.24.0
+        if: always()
+        with:
+          payload: |
+             {
+        "text": "*The Snyk scan result for repo is:* ${{ job.status }}\nNumber of vulnerabilities: ${{ env.RESULTS_LENGTH }}\nDetail: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+             }
+      env:
+       SLACK_WEBHOOK_URL: ${{ secrets.slack_webhook_url }}
+
