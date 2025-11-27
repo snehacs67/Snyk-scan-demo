@@ -20,7 +20,7 @@ jobs:
         with:
           payload: |
              {
-        "text": "*The Snyk scan result for repo is:* ${{ job.status }}\nNumber of vulnerabilities: ${{ env.RESULTS_LENGTH }}\nDetail: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        "text": "*The Snyk scan result for repo, https://github.com/snehacs67/SAST- is, ${{ job.status }}\nNumber of vulnerabilities: ${{ env.RESULTS_LENGTH }}\nDetail: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
              }
       env:
        SLACK_WEBHOOK_URL: ${{ secrets.slack_webhook_url }}
